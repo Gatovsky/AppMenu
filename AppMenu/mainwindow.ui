@@ -44,7 +44,7 @@
      <string/>
     </property>
    </widget>
-   <widget class="QWidget" name="">
+   <widget class="QWidget" name="layoutWidget">
     <property name="geometry">
      <rect>
       <x>40</x>
@@ -72,17 +72,17 @@
       <widget class="QComboBox" name="comboBox">
        <item>
         <property name="text">
-         <string>1 Inserción</string>
+         <string>1-Inserción</string>
         </property>
        </item>
        <item>
         <property name="text">
-         <string>2 Intercambio</string>
+         <string>2-Intercambio</string>
         </property>
        </item>
        <item>
         <property name="text">
-         <string>3 Selección</string>
+         <string>3-Selección</string>
         </property>
        </item>
       </widget>
