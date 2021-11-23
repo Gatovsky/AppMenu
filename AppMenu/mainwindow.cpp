@@ -1,5 +1,6 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
+#include "popupinput.h"
 #include "insercion.h"
 #include "bits/stdc++.h"
 using namespace std;

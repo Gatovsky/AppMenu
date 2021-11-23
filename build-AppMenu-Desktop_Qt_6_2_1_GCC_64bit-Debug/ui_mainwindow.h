@@ -34,7 +34,7 @@ public:
     QWidget *centralwidget;
     QListWidget *vistaPrograma;
     QLabel *salidaResultado;
-    QWidget *widget;
+    QWidget *layoutWidget;
     QFormLayout *formLayout;
     QLabel *label_programa;
     QComboBox *comboBox;
@@ -67,13 +67,13 @@ public:
         font.setPointSize(10);
         font.setBold(true);
         salidaResultado->setFont(font);
-        widget = new QWidget(centralwidget);
-        widget->setObjectName(QString::fromUtf8("widget"));
-        widget->setGeometry(QRect(40, 80, 191, 60));
-        formLayout = new QFormLayout(widget);
+        layoutWidget = new QWidget(centralwidget);
+        layoutWidget->setObjectName(QString::fromUtf8("layoutWidget"));
+        layoutWidget->setGeometry(QRect(40, 80, 191, 60));
+        formLayout = new QFormLayout(layoutWidget);
         formLayout->setObjectName(QString::fromUtf8("formLayout"));
         formLayout->setContentsMargins(0, 0, 0, 0);
-        label_programa = new QLabel(widget);
+        label_programa = new QLabel(layoutWidget);
         label_programa->setObjectName(QString::fromUtf8("label_programa"));
         QFont font1;
         font1.setPointSize(11);
@@ -82,7 +82,7 @@ public:
 
         formLayout->setWidget(0, QFormLayout::LabelRole, label_programa);
 
-        comboBox = new QComboBox(widget);
+        comboBox = new QComboBox(layoutWidget);
         comboBox->addItem(QString());
         comboBox->addItem(QString());
         comboBox->addItem(QString());
@@ -90,7 +90,7 @@ public:
 
         formLayout->setWidget(0, QFormLayout::FieldRole, comboBox);
 
-        botonEntrada = new QPushButton(widget);
+        botonEntrada = new QPushButton(layoutWidget);
         botonEntrada->setObjectName(QString::fromUtf8("botonEntrada"));
         QFont font2;
         font2.setBold(true);
@@ -130,9 +130,9 @@ public:
         actionInforme_de_errores->setText(QCoreApplication::translate("MainWindow", "Informe de errores", nullptr));
         salidaResultado->setText(QString());
         label_programa->setText(QCoreApplication::translate("MainWindow", "Programa", nullptr));
-        comboBox->setItemText(0, QCoreApplication::translate("MainWindow", "1 Inserci\303\263n", nullptr));
-        comboBox->setItemText(1, QCoreApplication::translate("MainWindow", "2 Intercambio", nullptr));
-        comboBox->setItemText(2, QCoreApplication::translate("MainWindow", "3 Selecci\303\263n", nullptr));
+        comboBox->setItemText(0, QCoreApplication::translate("MainWindow", "1-Inserci\303\263n", nullptr));
+        comboBox->setItemText(1, QCoreApplication::translate("MainWindow", "2-Intercambio", nullptr));
+        comboBox->setItemText(2, QCoreApplication::translate("MainWindow", "3-Selecci\303\263n", nullptr));
 
         botonEntrada->setText(QCoreApplication::translate("MainWindow", "Aceptar", nullptr));
         menuMenu->setTitle(QCoreApplication::translate("MainWindow", "Menu", nullptr));

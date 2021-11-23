@@ -11,14 +11,17 @@ CONFIG += c++11
 SOURCES += \
     insercion.cpp \
     main.cpp \
-    mainwindow.cpp
+    mainwindow.cpp \
+    popupinput.cpp
 
 HEADERS += \
     insercion.h \
-    mainwindow.h
+    mainwindow.h \
+    popupinput.h
 
 FORMS += \
-    mainwindow.ui
+    mainwindow.ui \
+    popupinput.ui
 
 TRANSLATIONS += \
     AppMenu_es_MX.ts
