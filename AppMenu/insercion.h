@@ -1,7 +1,7 @@
 #ifndef INSERCION_H
 #define INSERCION_H
 #include <QVector>
-using namespace std;
+
 
 class Insercion{
 public:

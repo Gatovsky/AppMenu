@@ -1,5 +1,5 @@
 /****************************************************************************
-** Meta object code from reading C++ file 'popupinput.h'
+** Meta object code from reading C++ file 'entradadatos.h'
 **
 ** Created by: The Qt Meta Object Compiler version 68 (Qt 6.2.1)
 **
@@ -7,11 +7,11 @@
 *****************************************************************************/
 
 #include <memory>
-#include "../AppMenu/popupinput.h"
+#include "../AppMenu/entradadatos.h"
 #include <QtCore/qbytearray.h>
 #include <QtCore/qmetatype.h>
 #if !defined(Q_MOC_OUTPUT_REVISION)
-#error "The header file 'popupinput.h' doesn't include <QObject>."
+#error "The header file 'entradadatos.h' doesn't include <QObject>."
 #elif Q_MOC_OUTPUT_REVISION != 68
 #error "This file was generated using the moc from 6.2.1. It"
 #error "cannot be used with the include files from this version of Qt."
@@ -21,25 +21,24 @@
 QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
-struct qt_meta_stringdata_PopUpInput_t {
+struct qt_meta_stringdata_entradaDatos_t {
     const uint offsetsAndSize[6];
-    char stringdata0[42];
+    char stringdata0[36];
 };
 #define QT_MOC_LITERAL(ofs, len) \
-    uint(offsetof(qt_meta_stringdata_PopUpInput_t, stringdata0) + ofs), len 
-static const qt_meta_stringdata_PopUpInput_t qt_meta_stringdata_PopUpInput = {
+    uint(offsetof(qt_meta_stringdata_entradaDatos_t, stringdata0) + ofs), len 
+static const qt_meta_stringdata_entradaDatos_t qt_meta_stringdata_entradaDatos = {
     {
-QT_MOC_LITERAL(0, 10), // "PopUpInput"
-QT_MOC_LITERAL(11, 29), // "on_pushButton_aceptar_clicked"
-QT_MOC_LITERAL(41, 0) // ""
+QT_MOC_LITERAL(0, 12), // "entradaDatos"
+QT_MOC_LITERAL(13, 21), // "on_pushButton_clicked"
+QT_MOC_LITERAL(35, 0) // ""
 
     },
-    "PopUpInput\0on_pushButton_aceptar_clicked\0"
-    ""
+    "entradaDatos\0on_pushButton_clicked\0"
 };
 #undef QT_MOC_LITERAL
 
-static const uint qt_meta_data_PopUpInput[] = {
+static const uint qt_meta_data_entradaDatos[] = {
 
  // content:
       10,       // revision
@@ -61,27 +60,27 @@ static const uint qt_meta_data_PopUpInput[] = {
        0        // eod
 };
 
-void PopUpInput::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
+void entradaDatos::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
 {
     if (_c == QMetaObject::InvokeMetaMethod) {
-        auto *_t = static_cast<PopUpInput *>(_o);
+        auto *_t = static_cast<entradaDatos *>(_o);
         (void)_t;
         switch (_id) {
-        case 0: _t->on_pushButton_aceptar_clicked(); break;
+        case 0: _t->on_pushButton_clicked(); break;
         default: ;
         }
     }
     (void)_a;
 }
 
-const QMetaObject PopUpInput::staticMetaObject = { {
+const QMetaObject entradaDatos::staticMetaObject = { {
     QMetaObject::SuperData::link<QDialog::staticMetaObject>(),
-    qt_meta_stringdata_PopUpInput.offsetsAndSize,
-    qt_meta_data_PopUpInput,
+    qt_meta_stringdata_entradaDatos.offsetsAndSize,
+    qt_meta_data_entradaDatos,
     qt_static_metacall,
     nullptr,
-qt_incomplete_metaTypeArray<qt_meta_stringdata_PopUpInput_t
-, QtPrivate::TypeAndForceComplete<PopUpInput, std::true_type>
+qt_incomplete_metaTypeArray<qt_meta_stringdata_entradaDatos_t
+, QtPrivate::TypeAndForceComplete<entradaDatos, std::true_type>
 , QtPrivate::TypeAndForceComplete<void, std::false_type>
 
 
@@ -90,20 +89,20 @@ qt_incomplete_metaTypeArray<qt_meta_stringdata_PopUpInput_t
 } };
 
 
-const QMetaObject *PopUpInput::metaObject() const
+const QMetaObject *entradaDatos::metaObject() const
 {
     return QObject::d_ptr->metaObject ? QObject::d_ptr->dynamicMetaObject() : &staticMetaObject;
 }
 
-void *PopUpInput::qt_metacast(const char *_clname)
+void *entradaDatos::qt_metacast(const char *_clname)
 {
     if (!_clname) return nullptr;
-    if (!strcmp(_clname, qt_meta_stringdata_PopUpInput.stringdata0))
+    if (!strcmp(_clname, qt_meta_stringdata_entradaDatos.stringdata0))
         return static_cast<void*>(this);
     return QDialog::qt_metacast(_clname);
 }
 
-int PopUpInput::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
+int entradaDatos::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
 {
     _id = QDialog::qt_metacall(_c, _id, _a);
     if (_id < 0)

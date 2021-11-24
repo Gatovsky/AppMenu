@@ -1,8 +1,11 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
-#include "popupinput.h"
 #include "insercion.h"
+#include "intercambio.h"
+#include "seleccion.h"
 #include "bits/stdc++.h"
+
+
 using namespace std;
 
 MainWindow::MainWindow(QWidget *parent)
@@ -18,6 +21,31 @@ MainWindow::~MainWindow()
 }
 
 
+void MainWindow::ImprimirValores(QString str1, QString str2, QString str3){
+  ui->salidaResultado->setText("Array desordenado: "+ str1+ "\n"+
+                               "Array Ordenado por método de "+ str3+":"+"\n"+
+                               str2);
+}
+
+
+QString MainWindow::QVector2Qstring(QVector<int> v){
+  QString str;
+  for(int i=0; i<v.size(); i++){
+      str.append(QString::number(v[i])+" ");
+    }
+  return str;
+}
+
+
+QVector<int> MainWindow::QString2QVector(QString str, int longitud){
+  QVector<int> v;
+  for(int i=0; i<longitud; i++){
+      int num = str.split(" ")[i].toInt();
+      v.push_back(num);
+    }
+  return v;
+}
+
 
 void MainWindow::on_botonEntrada_clicked(){
     char char_sel;
@@ -28,33 +56,61 @@ void MainWindow::on_botonEntrada_clicked(){
     switch (char_sel) {
       case '1':{
           Insercion inser{};
-          QVector<int> v_desordenado = inser.getVector();
+          QVector<int>v, v_desordenado = inser.getVector();
           QString str_v, str_v_desordenado;
 
-          for(int i=0; i<v_desordenado.size(); i++){
-              str_v_desordenado.append(QString::number(v_desordenado[i])+" ");
-            }
+          str_v_desordenado= QVector2Qstring(v_desordenado);
 
           inser.metodoInsercion();
-          QVector<int> v = inser.getVector();
+          v = inser.getVector();
+          str_v= QVector2Qstring(v);
 
+          ImprimirValores(str_v_desordenado, str_v, "Inserción");
 
-          for(int i=0; i<v.size(); i++){
-              str_v.append(QString::number(v[i])+" ");
-            }
-
-          ui->salidaResultado->setText("Array desordenado: "+ str_v_desordenado+ "\n"+
-                                       "Array Ordenado por el método de Inserción:\n"+
-                                       str_v);
           break;
         }
 
-      case '2':
-        ui->salidaResultado->setText("Nothing to do in case 2");
-        break;
-      case '3':
-        ui ->salidaResultado->setText(("Nothing to do in case 3"));
-        break;
+      case '2':{
+          Intercambio inter{};
+          QVector<int> v, v_desordenado = inter.getVector();
+          QString str_v_ordenado, str_v_desordenado;
+
+          str_v_desordenado= QVector2Qstring(v_desordenado);
+
+
+          inter.metodoIntercambio();
+          v = inter.getVector();
+          str_v_ordenado= QVector2Qstring(v);
+
+          ImprimirValores(str_v_desordenado, str_v_ordenado, "Intercambio");
+
+          break;
+        }
+      case '3':{
+
+          QString str_datos, str_v_ordenado; QVector<int> v_ordenado;
+          int cantidad = 0;
+
+          entradadatos = new entradaDatos(this);
+          entradadatos->exec();
+          cantidad = entradadatos->getCantidad();
+          str_datos = entradadatos->getDatos();
+
+          QVector<int> v_datos = QString2QVector(str_datos, cantidad);
+
+          Seleccion selec{};
+          selec.setTam(cantidad);
+          selec.setVector(v_datos);
+
+          selec.metodoSeleccion();
+          v_ordenado= selec.getVector();
+
+          str_v_ordenado = QVector2Qstring(v_ordenado);
+
+          ImprimirValores(str_datos, str_v_ordenado, "Selección");
+
+          break;
+        }
       default:
         break;
     }
