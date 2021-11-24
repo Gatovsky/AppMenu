@@ -46,6 +46,13 @@ QVector<int> MainWindow::QString2QVector(QString str, int longitud){
   return v;
 }
 
+void MainWindow::IngresarDatos(){
+  entradadatos = new entradaDatos(this);
+  entradadatos->exec();
+  setCantidad(entradadatos->getCantidad());
+  setDatos(entradadatos->getDatos());
+}
+
 
 void MainWindow::on_botonEntrada_clicked(){
     char char_sel;
@@ -88,13 +95,9 @@ void MainWindow::on_botonEntrada_clicked(){
         }
       case '3':{
 
-          QString str_datos, str_v_ordenado; QVector<int> v_ordenado;
-          int cantidad = 0;
+          QString str_v_ordenado; QVector<int> v_ordenado;
 
-          entradadatos = new entradaDatos(this);
-          entradadatos->exec();
-          cantidad = entradadatos->getCantidad();
-          str_datos = entradadatos->getDatos();
+          IngresarDatos();
 
           QVector<int> v_datos = QString2QVector(str_datos, cantidad);
 
