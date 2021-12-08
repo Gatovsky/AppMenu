@@ -15,11 +15,11 @@
 #include <QtWidgets/QComboBox>
 #include <QtWidgets/QFormLayout>
 #include <QtWidgets/QLabel>
-#include <QtWidgets/QListWidget>
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QMenu>
 #include <QtWidgets/QMenuBar>
 #include <QtWidgets/QPushButton>
+#include <QtWidgets/QScrollArea>
 #include <QtWidgets/QStatusBar>
 #include <QtWidgets/QWidget>
 
@@ -32,13 +32,14 @@ public:
     QAction *actionAcerca_de_AppMenu;
     QAction *actionInforme_de_errores;
     QWidget *centralwidget;
-    QListWidget *vistaPrograma;
     QLabel *salidaResultado;
     QWidget *layoutWidget;
     QFormLayout *formLayout;
     QLabel *label_programa;
     QComboBox *comboBox;
     QPushButton *botonEntrada;
+    QScrollArea *scrollCodigo;
+    QWidget *scrollAreaWidgetContents;
     QMenuBar *menubar;
     QMenu *menuMenu;
     QMenu *menuAcerca_de;
@@ -49,6 +50,8 @@ public:
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName(QString::fromUtf8("MainWindow"));
         MainWindow->resize(792, 572);
+        MainWindow->setToolButtonStyle(Qt::ToolButtonFollowStyle);
+        MainWindow->setUnifiedTitleAndToolBarOnMac(false);
         actionCerrar = new QAction(MainWindow);
         actionCerrar->setObjectName(QString::fromUtf8("actionCerrar"));
         actionAcerca_de_AppMenu = new QAction(MainWindow);
@@ -57,19 +60,16 @@ public:
         actionInforme_de_errores->setObjectName(QString::fromUtf8("actionInforme_de_errores"));
         centralwidget = new QWidget(MainWindow);
         centralwidget->setObjectName(QString::fromUtf8("centralwidget"));
-        vistaPrograma = new QListWidget(centralwidget);
-        vistaPrograma->setObjectName(QString::fromUtf8("vistaPrograma"));
-        vistaPrograma->setGeometry(QRect(40, 220, 711, 311));
         salidaResultado = new QLabel(centralwidget);
         salidaResultado->setObjectName(QString::fromUtf8("salidaResultado"));
-        salidaResultado->setGeometry(QRect(300, 30, 441, 161));
+        salidaResultado->setGeometry(QRect(300, 30, 441, 111));
         QFont font;
         font.setPointSize(10);
         font.setBold(true);
         salidaResultado->setFont(font);
         layoutWidget = new QWidget(centralwidget);
         layoutWidget->setObjectName(QString::fromUtf8("layoutWidget"));
-        layoutWidget->setGeometry(QRect(40, 80, 191, 60));
+        layoutWidget->setGeometry(QRect(40, 56, 192, 60));
         formLayout = new QFormLayout(layoutWidget);
         formLayout->setObjectName(QString::fromUtf8("formLayout"));
         formLayout->setContentsMargins(0, 0, 0, 0);
@@ -98,6 +98,18 @@ public:
 
         formLayout->setWidget(1, QFormLayout::FieldRole, botonEntrada);
 
+        scrollCodigo = new QScrollArea(centralwidget);
+        scrollCodigo->setObjectName(QString::fromUtf8("scrollCodigo"));
+        scrollCodigo->setGeometry(QRect(40, 180, 711, 341));
+        scrollCodigo->setStyleSheet(QString::fromUtf8("background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:0, stop:0 rgba(255, 0, 0, 255), stop:0.166 rgba(255, 255, 0, 255), stop:0.333 rgba(0, 255, 0, 255), stop:0.5 rgba(0, 255, 255, 255), stop:0.666 rgba(0, 0, 255, 255), stop:0.833 rgba(255, 0, 255, 255), stop:1 rgba(255, 0, 0, 255));"));
+        scrollCodigo->setFrameShape(QFrame::StyledPanel);
+        scrollCodigo->setFrameShadow(QFrame::Sunken);
+        scrollCodigo->setLineWidth(4);
+        scrollCodigo->setWidgetResizable(true);
+        scrollAreaWidgetContents = new QWidget();
+        scrollAreaWidgetContents->setObjectName(QString::fromUtf8("scrollAreaWidgetContents"));
+        scrollAreaWidgetContents->setGeometry(QRect(0, 0, 709, 339));
+        scrollCodigo->setWidget(scrollAreaWidgetContents);
         MainWindow->setCentralWidget(centralwidget);
         menubar = new QMenuBar(MainWindow);
         menubar->setObjectName(QString::fromUtf8("menubar"));

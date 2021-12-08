@@ -74,6 +74,7 @@ void MainWindow::on_botonEntrada_clicked(){
 
           ImprimirValores(str_v_desordenado, str_v, "Inserción");
 
+
           break;
         }
 
