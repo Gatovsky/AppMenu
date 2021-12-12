@@ -7,46 +7,30 @@
     <x>0</x>
     <y>0</y>
     <width>792</width>
-    <height>572</height>
+    <height>606</height>
    </rect>
   </property>
   <property name="windowTitle">
-   <string>MainWindow</string>
+   <string>AppMenu</string>
+  </property>
+  <property name="windowIcon">
+   <iconset>
+    <normaloff>../assets/menu.png</normaloff>../assets/menu.png</iconset>
   </property>
   <property name="toolButtonStyle">
-   <enum>Qt::ToolButtonFollowStyle</enum>
+   <enum>Qt::ToolButtonIconOnly</enum>
   </property>
   <property name="unifiedTitleAndToolBarOnMac">
    <bool>false</bool>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QLabel" name="salidaResultado">
-    <property name="geometry">
-     <rect>
-      <x>300</x>
-      <y>30</y>
-      <width>441</width>
-      <height>111</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <pointsize>10</pointsize>
-      <weight>75</weight>
-      <bold>true</bold>
-     </font>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-   </widget>
    <widget class="QWidget" name="layoutWidget">
     <property name="geometry">
      <rect>
       <x>40</x>
-      <y>56</y>
-      <width>192</width>
-      <height>60</height>
+      <y>60</y>
+      <width>221</width>
+      <height>101</height>
      </rect>
     </property>
     <layout class="QFormLayout" name="formLayout">
@@ -55,7 +39,6 @@
        <property name="font">
         <font>
          <pointsize>11</pointsize>
-         <weight>50</weight>
          <bold>false</bold>
         </font>
        </property>
@@ -87,7 +70,6 @@
       <widget class="QPushButton" name="botonEntrada">
        <property name="font">
         <font>
-         <weight>75</weight>
          <bold>true</bold>
         </font>
        </property>
@@ -98,40 +80,37 @@
      </item>
     </layout>
    </widget>
-   <widget class="QScrollArea" name="scrollCodigo">
+   <widget class="QTextEdit" name="textCodigo">
     <property name="geometry">
      <rect>
       <x>40</x>
       <y>180</y>
       <width>711</width>
-      <height>341</height>
+      <height>361</height>
      </rect>
     </property>
-    <property name="styleSheet">
-     <string notr="true">background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:0, stop:0 rgba(255, 0, 0, 255), stop:0.166 rgba(255, 255, 0, 255), stop:0.333 rgba(0, 255, 0, 255), stop:0.5 rgba(0, 255, 255, 255), stop:0.666 rgba(0, 0, 255, 255), stop:0.833 rgba(255, 0, 255, 255), stop:1 rgba(255, 0, 0, 255));</string>
+    <property name="font">
+     <font>
+      <family>Cascadia Code PL</family>
+      <pointsize>11</pointsize>
+     </font>
     </property>
-    <property name="frameShape">
-     <enum>QFrame::StyledPanel</enum>
+   </widget>
+   <widget class="QTextEdit" name="salidaResultado">
+    <property name="geometry">
+     <rect>
+      <x>270</x>
+      <y>59</y>
+      <width>481</width>
+      <height>101</height>
+     </rect>
     </property>
-    <property name="frameShadow">
-     <enum>QFrame::Sunken</enum>
+    <property name="font">
+     <font>
+      <pointsize>10</pointsize>
+      <bold>true</bold>
+     </font>
     </property>
-    <property name="lineWidth">
-     <number>4</number>
-    </property>
-    <property name="widgetResizable">
-     <bool>true</bool>
-    </property>
-    <widget class="QWidget" name="scrollAreaWidgetContents">
-     <property name="geometry">
-      <rect>
-       <x>0</x>
-       <y>0</y>
-       <width>709</width>
-       <height>339</height>
-      </rect>
-     </property>
-    </widget>
    </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
@@ -140,7 +119,7 @@
      <x>0</x>
      <y>0</y>
      <width>792</width>
-     <height>23</height>
+     <height>22</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuMenu">
@@ -153,26 +132,57 @@
     <property name="title">
      <string>Ayuda</string>
     </property>
-    <addaction name="actionAcerca_de_AppMenu"/>
-    <addaction name="actionInforme_de_errores"/>
+    <addaction name="actionAcerca"/>
+    <addaction name="actionAcerca_de_Qt"/>
    </widget>
    <addaction name="menuMenu"/>
    <addaction name="menuAcerca_de"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
   <action name="actionCerrar">
+   <property name="icon">
+    <iconset>
+     <normalon>../assets/cerrar-sesion.png</normalon>
+    </iconset>
+   </property>
    <property name="text">
     <string>Cerrar</string>
    </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+Q</string>
+   </property>
   </action>
-  <action name="actionAcerca_de_AppMenu">
+  <action name="actionAcerca">
+   <property name="icon">
+    <iconset>
+     <normalon>../assets/informacion.png</normalon>
+    </iconset>
+   </property>
    <property name="text">
     <string>Acerca de AppMenu</string>
    </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
+   </property>
   </action>
-  <action name="actionInforme_de_errores">
+  <action name="actionAcerca_de_Qt">
+   <property name="icon">
+    <iconset>
+     <normalon>../assets/qt.png</normalon>
+    </iconset>
+   </property>
    <property name="text">
-    <string>Informe de errores</string>
+    <string>Acerca de Qt</string>
+   </property>
+   <property name="toolTip">
+    <string>AcercadeQt</string>
    </property>
   </action>
  </widget>

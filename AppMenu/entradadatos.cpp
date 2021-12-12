@@ -6,18 +6,17 @@ entradaDatos::entradaDatos(QWidget *parent) :
   ui(new Ui::entradaDatos){
 
   ui->setupUi(this);
+  connect(ui->pushButton, SIGNAL(clicked()), this, SLOT(enviar_pushButton_clicked()));
 }
 
 entradaDatos::~entradaDatos(){
   delete ui;
 }
 
-void entradaDatos::on_pushButton_clicked(){
 
-  setCantidad(ui->spinBoxCantidad->value());
-  setDatos(ui->lineDatos->text());
-
-  close();
-
+void entradaDatos::enviar_pushButton_clicked(){
+    setCantidad(ui->spinBoxCantidad->value());
+    setDatos(ui->lineDatos->text());
+    this->close();
 }
 

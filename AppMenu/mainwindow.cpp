@@ -3,7 +3,7 @@
 #include "insercion.h"
 #include "intercambio.h"
 #include "seleccion.h"
-#include "bits/stdc++.h"
+
 
 
 using namespace std;
@@ -13,6 +13,9 @@ MainWindow::MainWindow(QWidget *parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+    connect(ui->botonEntrada,SIGNAL(clicked()), this, SLOT(sel_metodo_clicked()));
+    connect(ui->actionCerrar, SIGNAL(triggered()), this, SLOT(close()));
+    connect(ui->actionAcerca_de_Qt, SIGNAL(triggered()), this, SLOT(action_acercaqt()));
 }
 
 MainWindow::~MainWindow()
@@ -20,6 +23,9 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
+void MainWindow::action_acercaqt(){
+    QMessageBox::aboutQt(this, "Qt");
+}
 
 void MainWindow::ImprimirValores(QString str1, QString str2, QString str3){
   ui->salidaResultado->setText("Array desordenado: "+ str1+ "\n"+
@@ -51,10 +57,29 @@ void MainWindow::IngresarDatos(){
   entradadatos->exec();
   setCantidad(entradadatos->getCantidad());
   setDatos(entradadatos->getDatos());
+  entradadatos->close();
+}
+
+void MainWindow::ImprimirArchivo(QString str){
+    QFile archivo;
+    archivo.setFileName(str);
+    if(!archivo.exists()){
+        qDebug() << "file not found";
+
+    }
+    archivo.open(QIODevice::ReadOnly | QIODevice::Text);
+    if(!archivo.isOpen()){
+        qDebug() << "file cannot be opened";
+    }
+    QTextStream in(&archivo);
+    QString texto= in.readAll();
+    ui->textCodigo->setText(texto);
+    archivo.close();
 }
 
 
-void MainWindow::on_botonEntrada_clicked(){
+
+void MainWindow::sel_metodo_clicked(){
     char char_sel;
     QString str_sel = ui->comboBox->currentText();
     string tmp_str = str_sel.toStdString();
@@ -73,6 +98,7 @@ void MainWindow::on_botonEntrada_clicked(){
           str_v= QVector2Qstring(v);
 
           ImprimirValores(str_v_desordenado, str_v, "Inserción");
+          ImprimirArchivo("../AppMenu/insercion.cpp");
 
 
           break;
@@ -91,6 +117,7 @@ void MainWindow::on_botonEntrada_clicked(){
           str_v_ordenado= QVector2Qstring(v);
 
           ImprimirValores(str_v_desordenado, str_v_ordenado, "Intercambio");
+          ImprimirArchivo("../AppMenu/intercambio.cpp");
 
           break;
         }
@@ -112,11 +139,14 @@ void MainWindow::on_botonEntrada_clicked(){
           str_v_ordenado = QVector2Qstring(v_ordenado);
 
           ImprimirValores(str_datos, str_v_ordenado, "Selección");
+          ImprimirArchivo("../AppMenu/seleccion.cpp");
 
           break;
         }
       default:
         break;
     }
+
 }
+
 

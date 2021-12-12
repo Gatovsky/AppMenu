@@ -3,6 +3,9 @@
 
 #include <QMainWindow>
 #include <QMessageBox>
+#include <QFile>
+#include <QTextStream>
+#include <QDebug>
 #include <bits/stdc++.h>
 #include <entradadatos.h>
 
@@ -26,6 +29,8 @@ public:
 
     void IngresarDatos();
 
+    void ImprimirArchivo(QString str);
+
     int getCantidad(){
       return this->cantidad;
     }
@@ -42,8 +47,11 @@ public:
       this->str_datos= str;
     }
 
+
 private slots:
-    void on_botonEntrada_clicked();
+    void sel_metodo_clicked();
+    //void action_cerrar();
+    void action_acercaqt();
 
 private:
     Ui::MainWindow *ui;
