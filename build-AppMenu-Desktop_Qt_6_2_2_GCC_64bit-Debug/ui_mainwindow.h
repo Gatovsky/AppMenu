@@ -51,7 +51,7 @@ public:
             MainWindow->setObjectName(QString::fromUtf8("MainWindow"));
         MainWindow->resize(792, 606);
         QIcon icon;
-        icon.addFile(QString::fromUtf8("../assets/menu.png"), QSize(), QIcon::Normal, QIcon::Off);
+        icon.addFile(QString::fromUtf8("../assets/icono.ico"), QSize(), QIcon::Normal, QIcon::Off);
         MainWindow->setWindowIcon(icon);
         MainWindow->setToolButtonStyle(Qt::ToolButtonIconOnly);
         MainWindow->setUnifiedTitleAndToolBarOnMac(false);
@@ -95,6 +95,8 @@ public:
         comboBox->addItem(QString());
         comboBox->addItem(QString());
         comboBox->addItem(QString());
+        comboBox->addItem(QString());
+        comboBox->addItem(QString());
         comboBox->setObjectName(QString::fromUtf8("comboBox"));
 
         formLayout->setWidget(0, QFormLayout::FieldRole, comboBox);
@@ -111,9 +113,9 @@ public:
         textCodigo->setObjectName(QString::fromUtf8("textCodigo"));
         textCodigo->setGeometry(QRect(40, 180, 711, 361));
         QFont font3;
-        font3.setFamilies({QString::fromUtf8("Cascadia Code PL")});
         font3.setPointSize(11);
         textCodigo->setFont(font3);
+        textCodigo->setAutoFormatting(QTextEdit::AutoNone);
         salidaResultado = new QTextEdit(centralwidget);
         salidaResultado->setObjectName(QString::fromUtf8("salidaResultado"));
         salidaResultado->setGeometry(QRect(270, 59, 481, 101));
@@ -161,8 +163,15 @@ public:
         comboBox->setItemText(0, QCoreApplication::translate("MainWindow", "1-Inserci\303\263n", nullptr));
         comboBox->setItemText(1, QCoreApplication::translate("MainWindow", "2-Intercambio", nullptr));
         comboBox->setItemText(2, QCoreApplication::translate("MainWindow", "3-Selecci\303\263n", nullptr));
+        comboBox->setItemText(3, QCoreApplication::translate("MainWindow", "4-Burbuja", nullptr));
+        comboBox->setItemText(4, QCoreApplication::translate("MainWindow", "5-Quick Sort", nullptr));
 
         botonEntrada->setText(QCoreApplication::translate("MainWindow", "Aceptar", nullptr));
+        textCodigo->setHtml(QCoreApplication::translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><meta charset=\"utf-8\" /><style type=\"text/css\">\n"
+"p, li { white-space: pre-wrap; }\n"
+"</style></head><body style=\" font-family:'Sans Serif'; font-size:11pt; font-weight:400; font-style:normal;\">\n"
+"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:4; text-indent:0px; font-family:'Cascadia Code PL';\"><br /></p></body></html>", nullptr));
         menuMenu->setTitle(QCoreApplication::translate("MainWindow", "Menu", nullptr));
         menuAcerca_de->setTitle(QCoreApplication::translate("MainWindow", "Ayuda", nullptr));
     } // retranslateUi

@@ -52,19 +52,23 @@ OBJECTS_DIR   = ./
 
 ####### Files
 
-SOURCES       = ../AppMenu/entradadatos.cpp \
+SOURCES       = ../AppMenu/burbuja.cpp \
+		../AppMenu/entradadatos.cpp \
 		../AppMenu/insercion.cpp \
 		../AppMenu/intercambio.cpp \
 		../AppMenu/main.cpp \
 		../AppMenu/mainwindow.cpp \
+		../AppMenu/quicksort.cpp \
 		../AppMenu/seleccion.cpp qrc_qmake_qmake_qm_files.cpp \
 		moc_entradadatos.cpp \
 		moc_mainwindow.cpp
-OBJECTS       = entradadatos.o \
+OBJECTS       = burbuja.o \
+		entradadatos.o \
 		insercion.o \
 		intercambio.o \
 		main.o \
 		mainwindow.o \
+		quicksort.o \
 		seleccion.o \
 		qrc_qmake_qmake_qm_files.o \
 		moc_entradadatos.o \
@@ -321,15 +325,19 @@ DIST          = ../../Qt/6.2.1/gcc_64/mkspecs/features/spec_pre.prf \
 		../../Qt/6.2.1/gcc_64/mkspecs/features/exceptions.prf \
 		../../Qt/6.2.1/gcc_64/mkspecs/features/yacc.prf \
 		../../Qt/6.2.1/gcc_64/mkspecs/features/lex.prf \
-		../AppMenu/AppMenu.pro ../AppMenu/entradadatos.h \
+		../AppMenu/AppMenu.pro ../AppMenu/burbuja.h \
+		../AppMenu/entradadatos.h \
 		../AppMenu/insercion.h \
 		../AppMenu/intercambio.h \
 		../AppMenu/mainwindow.h \
-		../AppMenu/seleccion.h ../AppMenu/entradadatos.cpp \
+		../AppMenu/quicksort.h \
+		../AppMenu/seleccion.h ../AppMenu/burbuja.cpp \
+		../AppMenu/entradadatos.cpp \
 		../AppMenu/insercion.cpp \
 		../AppMenu/intercambio.cpp \
 		../AppMenu/main.cpp \
 		../AppMenu/mainwindow.cpp \
+		../AppMenu/quicksort.cpp \
 		../AppMenu/seleccion.cpp
 QMAKE_TARGET  = AppMenu
 DESTDIR       = 
@@ -874,8 +882,8 @@ distdir: FORCE
 	$(COPY_FILE) --parents ../AppMenu/AppMenu_es_MX.ts $(DISTDIR)/
 	$(COPY_FILE) --parents qmake_qmake_qm_files.qrc $(DISTDIR)/
 	$(COPY_FILE) --parents ../../Qt/6.2.1/gcc_64/mkspecs/features/data/dummy.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents ../AppMenu/entradadatos.h ../AppMenu/insercion.h ../AppMenu/intercambio.h ../AppMenu/mainwindow.h ../AppMenu/seleccion.h $(DISTDIR)/
-	$(COPY_FILE) --parents ../AppMenu/entradadatos.cpp ../AppMenu/insercion.cpp ../AppMenu/intercambio.cpp ../AppMenu/main.cpp ../AppMenu/mainwindow.cpp ../AppMenu/seleccion.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents ../AppMenu/burbuja.h ../AppMenu/entradadatos.h ../AppMenu/insercion.h ../AppMenu/intercambio.h ../AppMenu/mainwindow.h ../AppMenu/quicksort.h ../AppMenu/seleccion.h $(DISTDIR)/
+	$(COPY_FILE) --parents ../AppMenu/burbuja.cpp ../AppMenu/entradadatos.cpp ../AppMenu/insercion.cpp ../AppMenu/intercambio.cpp ../AppMenu/main.cpp ../AppMenu/mainwindow.cpp ../AppMenu/quicksort.cpp ../AppMenu/seleccion.cpp $(DISTDIR)/
 	$(COPY_FILE) --parents ../AppMenu/entradadatos.ui ../AppMenu/mainwindow.ui $(DISTDIR)/
 	$(COPY_FILE) --parents ../AppMenu/AppMenu_es_MX.ts $(DISTDIR)/
 
@@ -1193,6 +1201,11 @@ moc_mainwindow.cpp: ../AppMenu/mainwindow.h \
 		../../Qt/6.2.1/gcc_64/include/QtWidgets/QMessageBox \
 		../../Qt/6.2.1/gcc_64/include/QtWidgets/qmessagebox.h \
 		../../Qt/6.2.1/gcc_64/include/QtWidgets/qdialog.h \
+		../../Qt/6.2.1/gcc_64/include/QtCore/QFile \
+		../../Qt/6.2.1/gcc_64/include/QtCore/qfile.h \
+		../../Qt/6.2.1/gcc_64/include/QtCore/qfiledevice.h \
+		../../Qt/6.2.1/gcc_64/include/QtCore/QTextStream \
+		../../Qt/6.2.1/gcc_64/include/QtCore/QDebug \
 		../AppMenu/entradadatos.h \
 		../../Qt/6.2.1/gcc_64/include/QtWidgets/QDialog \
 		moc_predefs.h \
@@ -1223,6 +1236,58 @@ compiler_lex_clean:
 compiler_clean: compiler_lrelease_clean compiler_rcc_clean compiler_moc_predefs_clean compiler_moc_header_clean compiler_uic_clean 
 
 ####### Compile
+
+burbuja.o: ../AppMenu/burbuja.cpp ../AppMenu/burbuja.h \
+		../../Qt/6.2.1/gcc_64/include/QtCore/QVector \
+		../../Qt/6.2.1/gcc_64/include/QtCore/qvector.h \
+		../../Qt/6.2.1/gcc_64/include/QtCore/qlist.h \
+		../../Qt/6.2.1/gcc_64/include/QtCore/qarraydatapointer.h \
+		../../Qt/6.2.1/gcc_64/include/QtCore/qarraydataops.h \
+		../../Qt/6.2.1/gcc_64/include/QtCore/qarraydata.h \
+		../../Qt/6.2.1/gcc_64/include/QtCore/qpair.h \
+		../../Qt/6.2.1/gcc_64/include/QtCore/qglobal.h \
+		../../Qt/6.2.1/gcc_64/include/QtCore/qconfig-bootstrapped.h \
+		../../Qt/6.2.1/gcc_64/include/QtCore/qconfig.h \
+		../../Qt/6.2.1/gcc_64/include/QtCore/qtcore-config.h \
+		../../Qt/6.2.1/gcc_64/include/QtCore/qsystemdetection.h \
+		../../Qt/6.2.1/gcc_64/include/QtCore/qprocessordetection.h \
+		../../Qt/6.2.1/gcc_64/include/QtCore/qcompilerdetection.h \
+		../../Qt/6.2.1/gcc_64/include/QtCore/qtypeinfo.h \
+		../../Qt/6.2.1/gcc_64/include/QtCore/qcontainerfwd.h \
+		../../Qt/6.2.1/gcc_64/include/QtCore/qsysinfo.h \
+		../../Qt/6.2.1/gcc_64/include/QtCore/qlogging.h \
+		../../Qt/6.2.1/gcc_64/include/QtCore/qflags.h \
+		../../Qt/6.2.1/gcc_64/include/QtCore/qatomic.h \
+		../../Qt/6.2.1/gcc_64/include/QtCore/qbasicatomic.h \
+		../../Qt/6.2.1/gcc_64/include/QtCore/qatomic_bootstrap.h \
+		../../Qt/6.2.1/gcc_64/include/QtCore/qgenericatomic.h \
+		../../Qt/6.2.1/gcc_64/include/QtCore/qatomic_cxx11.h \
+		../../Qt/6.2.1/gcc_64/include/QtCore/qglobalstatic.h \
+		../../Qt/6.2.1/gcc_64/include/QtCore/qnumeric.h \
+		../../Qt/6.2.1/gcc_64/include/QtCore/qversiontagging.h \
+		../../Qt/6.2.1/gcc_64/include/QtCore/qcontainertools_impl.h \
+		../../Qt/6.2.1/gcc_64/include/QtCore/qnamespace.h \
+		../../Qt/6.2.1/gcc_64/include/QtCore/qtmetamacros.h \
+		../../Qt/6.2.1/gcc_64/include/QtCore/qhashfunctions.h \
+		../../Qt/6.2.1/gcc_64/include/QtCore/qstring.h \
+		../../Qt/6.2.1/gcc_64/include/QtCore/qchar.h \
+		../../Qt/6.2.1/gcc_64/include/QtCore/qstringview.h \
+		../../Qt/6.2.1/gcc_64/include/QtCore/qbytearray.h \
+		../../Qt/6.2.1/gcc_64/include/QtCore/qrefcount.h \
+		../../Qt/6.2.1/gcc_64/include/QtCore/qbytearrayalgorithms.h \
+		../../Qt/6.2.1/gcc_64/include/QtCore/qbytearrayview.h \
+		../../Qt/6.2.1/gcc_64/include/QtCore/qstringliteral.h \
+		../../Qt/6.2.1/gcc_64/include/QtCore/qstringalgorithms.h \
+		../../Qt/6.2.1/gcc_64/include/QtCore/qanystringview.h \
+		../../Qt/6.2.1/gcc_64/include/QtCore/qutf8stringview.h \
+		../../Qt/6.2.1/gcc_64/include/QtCore/qstringtokenizer.h \
+		../../Qt/6.2.1/gcc_64/include/QtCore/qstringbuilder.h \
+		../../Qt/6.2.1/gcc_64/include/QtCore/qiterator.h \
+		../../Qt/6.2.1/gcc_64/include/QtCore/qbytearraylist.h \
+		../../Qt/6.2.1/gcc_64/include/QtCore/qstringlist.h \
+		../../Qt/6.2.1/gcc_64/include/QtCore/qalgorithms.h \
+		../../Qt/6.2.1/gcc_64/include/QtCore/qstringmatcher.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o burbuja.o ../AppMenu/burbuja.cpp
 
 entradadatos.o: ../AppMenu/entradadatos.cpp ../AppMenu/entradadatos.h \
 		../../Qt/6.2.1/gcc_64/include/QtWidgets/QDialog \
@@ -1354,7 +1419,49 @@ entradadatos.o: ../AppMenu/entradadatos.cpp ../AppMenu/entradadatos.h \
 		../../Qt/6.2.1/gcc_64/include/QtGui/QTransform \
 		../../Qt/6.2.1/gcc_64/include/QtCore/qnativeinterface.h \
 		../../Qt/6.2.1/gcc_64/include/QtCore/qloggingcategory.h \
-		ui_entradadatos.h
+		ui_entradadatos.h \
+		../../Qt/6.2.1/gcc_64/include/QtCore/QVariant \
+		../../Qt/6.2.1/gcc_64/include/QtWidgets/QApplication \
+		../../Qt/6.2.1/gcc_64/include/QtWidgets/qapplication.h \
+		../../Qt/6.2.1/gcc_64/include/QtCore/qcoreapplication.h \
+		../../Qt/6.2.1/gcc_64/include/QtCore/qeventloop.h \
+		../../Qt/6.2.1/gcc_64/include/QtCore/qfuture.h \
+		../../Qt/6.2.1/gcc_64/include/QtCore/qfutureinterface.h \
+		../../Qt/6.2.1/gcc_64/include/QtCore/qmutex.h \
+		../../Qt/6.2.1/gcc_64/include/QtCore/qresultstore.h \
+		../../Qt/6.2.1/gcc_64/include/QtCore/qfuture_impl.h \
+		../../Qt/6.2.1/gcc_64/include/QtCore/qthreadpool.h \
+		../../Qt/6.2.1/gcc_64/include/QtCore/qthread.h \
+		../../Qt/6.2.1/gcc_64/include/QtCore/qdeadlinetimer.h \
+		../../Qt/6.2.1/gcc_64/include/QtCore/qelapsedtimer.h \
+		../../Qt/6.2.1/gcc_64/include/QtCore/qrunnable.h \
+		../../Qt/6.2.1/gcc_64/include/QtCore/qexception.h \
+		../../Qt/6.2.1/gcc_64/include/QtCore/qapplicationpermission.h \
+		../../Qt/6.2.1/gcc_64/include/QtCore/qcoreapplication_platform.h \
+		../../Qt/6.2.1/gcc_64/include/QtGui/qguiapplication.h \
+		../../Qt/6.2.1/gcc_64/include/QtGui/qinputmethod.h \
+		../../Qt/6.2.1/gcc_64/include/QtCore/qlocale.h \
+		../../Qt/6.2.1/gcc_64/include/QtGui/qguiapplication_platform.h \
+		../../Qt/6.2.1/gcc_64/include/QtWidgets/QLabel \
+		../../Qt/6.2.1/gcc_64/include/QtWidgets/qlabel.h \
+		../../Qt/6.2.1/gcc_64/include/QtWidgets/qframe.h \
+		../../Qt/6.2.1/gcc_64/include/QtGui/qpicture.h \
+		../../Qt/6.2.1/gcc_64/include/QtGui/qtextdocument.h \
+		../../Qt/6.2.1/gcc_64/include/QtWidgets/QLineEdit \
+		../../Qt/6.2.1/gcc_64/include/QtWidgets/qlineedit.h \
+		../../Qt/6.2.1/gcc_64/include/QtGui/qtextcursor.h \
+		../../Qt/6.2.1/gcc_64/include/QtGui/qtextformat.h \
+		../../Qt/6.2.1/gcc_64/include/QtGui/qpen.h \
+		../../Qt/6.2.1/gcc_64/include/QtGui/qtextoption.h \
+		../../Qt/6.2.1/gcc_64/include/QtWidgets/QPushButton \
+		../../Qt/6.2.1/gcc_64/include/QtWidgets/qpushbutton.h \
+		../../Qt/6.2.1/gcc_64/include/QtWidgets/qabstractbutton.h \
+		../../Qt/6.2.1/gcc_64/include/QtGui/qicon.h \
+		../../Qt/6.2.1/gcc_64/include/QtWidgets/QSpinBox \
+		../../Qt/6.2.1/gcc_64/include/QtWidgets/qspinbox.h \
+		../../Qt/6.2.1/gcc_64/include/QtWidgets/qabstractspinbox.h \
+		../../Qt/6.2.1/gcc_64/include/QtGui/qvalidator.h \
+		../../Qt/6.2.1/gcc_64/include/QtCore/qregularexpression.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o entradadatos.o ../AppMenu/entradadatos.cpp
 
 insercion.o: ../AppMenu/insercion.cpp ../AppMenu/insercion.h \
@@ -1596,6 +1703,11 @@ main.o: ../AppMenu/main.cpp ../AppMenu/mainwindow.h \
 		../../Qt/6.2.1/gcc_64/include/QtWidgets/QMessageBox \
 		../../Qt/6.2.1/gcc_64/include/QtWidgets/qmessagebox.h \
 		../../Qt/6.2.1/gcc_64/include/QtWidgets/qdialog.h \
+		../../Qt/6.2.1/gcc_64/include/QtCore/QFile \
+		../../Qt/6.2.1/gcc_64/include/QtCore/qfile.h \
+		../../Qt/6.2.1/gcc_64/include/QtCore/qfiledevice.h \
+		../../Qt/6.2.1/gcc_64/include/QtCore/QTextStream \
+		../../Qt/6.2.1/gcc_64/include/QtCore/QDebug \
 		../AppMenu/entradadatos.h \
 		../../Qt/6.2.1/gcc_64/include/QtWidgets/QDialog \
 		../../Qt/6.2.1/gcc_64/include/QtWidgets/QApplication \
@@ -1759,15 +1871,140 @@ mainwindow.o: ../AppMenu/mainwindow.cpp ../AppMenu/mainwindow.h \
 		../../Qt/6.2.1/gcc_64/include/QtWidgets/QMessageBox \
 		../../Qt/6.2.1/gcc_64/include/QtWidgets/qmessagebox.h \
 		../../Qt/6.2.1/gcc_64/include/QtWidgets/qdialog.h \
+		../../Qt/6.2.1/gcc_64/include/QtCore/QFile \
+		../../Qt/6.2.1/gcc_64/include/QtCore/qfile.h \
+		../../Qt/6.2.1/gcc_64/include/QtCore/qfiledevice.h \
+		../../Qt/6.2.1/gcc_64/include/QtCore/QTextStream \
+		../../Qt/6.2.1/gcc_64/include/QtCore/QDebug \
 		../AppMenu/entradadatos.h \
 		../../Qt/6.2.1/gcc_64/include/QtWidgets/QDialog \
 		ui_mainwindow.h \
+		../../Qt/6.2.1/gcc_64/include/QtCore/QVariant \
+		../../Qt/6.2.1/gcc_64/include/QtGui/QAction \
+		../../Qt/6.2.1/gcc_64/include/QtGui/qaction.h \
+		../../Qt/6.2.1/gcc_64/include/QtGui/QIcon \
+		../../Qt/6.2.1/gcc_64/include/QtWidgets/QApplication \
+		../../Qt/6.2.1/gcc_64/include/QtWidgets/qapplication.h \
+		../../Qt/6.2.1/gcc_64/include/QtCore/qcoreapplication.h \
+		../../Qt/6.2.1/gcc_64/include/QtCore/qeventloop.h \
+		../../Qt/6.2.1/gcc_64/include/QtCore/qfuture.h \
+		../../Qt/6.2.1/gcc_64/include/QtCore/qfutureinterface.h \
+		../../Qt/6.2.1/gcc_64/include/QtCore/qmutex.h \
+		../../Qt/6.2.1/gcc_64/include/QtCore/qresultstore.h \
+		../../Qt/6.2.1/gcc_64/include/QtCore/qfuture_impl.h \
+		../../Qt/6.2.1/gcc_64/include/QtCore/qthreadpool.h \
+		../../Qt/6.2.1/gcc_64/include/QtCore/qthread.h \
+		../../Qt/6.2.1/gcc_64/include/QtCore/qdeadlinetimer.h \
+		../../Qt/6.2.1/gcc_64/include/QtCore/qelapsedtimer.h \
+		../../Qt/6.2.1/gcc_64/include/QtCore/qrunnable.h \
+		../../Qt/6.2.1/gcc_64/include/QtCore/qexception.h \
+		../../Qt/6.2.1/gcc_64/include/QtCore/qapplicationpermission.h \
+		../../Qt/6.2.1/gcc_64/include/QtCore/qcoreapplication_platform.h \
+		../../Qt/6.2.1/gcc_64/include/QtGui/qguiapplication.h \
+		../../Qt/6.2.1/gcc_64/include/QtGui/qinputmethod.h \
+		../../Qt/6.2.1/gcc_64/include/QtCore/qlocale.h \
+		../../Qt/6.2.1/gcc_64/include/QtGui/qguiapplication_platform.h \
+		../../Qt/6.2.1/gcc_64/include/QtWidgets/QComboBox \
+		../../Qt/6.2.1/gcc_64/include/QtWidgets/qcombobox.h \
+		../../Qt/6.2.1/gcc_64/include/QtWidgets/qabstractitemdelegate.h \
+		../../Qt/6.2.1/gcc_64/include/QtWidgets/qstyleoption.h \
+		../../Qt/6.2.1/gcc_64/include/QtWidgets/qabstractspinbox.h \
+		../../Qt/6.2.1/gcc_64/include/QtGui/qvalidator.h \
+		../../Qt/6.2.1/gcc_64/include/QtCore/qregularexpression.h \
+		../../Qt/6.2.1/gcc_64/include/QtWidgets/qslider.h \
+		../../Qt/6.2.1/gcc_64/include/QtWidgets/qabstractslider.h \
+		../../Qt/6.2.1/gcc_64/include/QtWidgets/qstyle.h \
+		../../Qt/6.2.1/gcc_64/include/QtWidgets/qtabbar.h \
+		../../Qt/6.2.1/gcc_64/include/QtWidgets/qrubberband.h \
+		../../Qt/6.2.1/gcc_64/include/QtWidgets/qframe.h \
+		../../Qt/6.2.1/gcc_64/include/QtCore/qabstractitemmodel.h \
+		../../Qt/6.2.1/gcc_64/include/QtWidgets/QFormLayout \
+		../../Qt/6.2.1/gcc_64/include/QtWidgets/qformlayout.h \
+		../../Qt/6.2.1/gcc_64/include/QtWidgets/QLayout \
+		../../Qt/6.2.1/gcc_64/include/QtWidgets/qlayout.h \
+		../../Qt/6.2.1/gcc_64/include/QtWidgets/qlayoutitem.h \
+		../../Qt/6.2.1/gcc_64/include/QtWidgets/qboxlayout.h \
+		../../Qt/6.2.1/gcc_64/include/QtWidgets/qgridlayout.h \
+		../../Qt/6.2.1/gcc_64/include/QtWidgets/QLabel \
+		../../Qt/6.2.1/gcc_64/include/QtWidgets/qlabel.h \
+		../../Qt/6.2.1/gcc_64/include/QtGui/qpicture.h \
+		../../Qt/6.2.1/gcc_64/include/QtGui/qtextdocument.h \
+		../../Qt/6.2.1/gcc_64/include/QtWidgets/QMenu \
+		../../Qt/6.2.1/gcc_64/include/QtWidgets/qmenu.h \
+		../../Qt/6.2.1/gcc_64/include/QtWidgets/QMenuBar \
+		../../Qt/6.2.1/gcc_64/include/QtWidgets/qmenubar.h \
+		../../Qt/6.2.1/gcc_64/include/QtWidgets/QPushButton \
+		../../Qt/6.2.1/gcc_64/include/QtWidgets/qpushbutton.h \
+		../../Qt/6.2.1/gcc_64/include/QtWidgets/qabstractbutton.h \
+		../../Qt/6.2.1/gcc_64/include/QtWidgets/QStatusBar \
+		../../Qt/6.2.1/gcc_64/include/QtWidgets/qstatusbar.h \
+		../../Qt/6.2.1/gcc_64/include/QtWidgets/QTextEdit \
+		../../Qt/6.2.1/gcc_64/include/QtWidgets/qtextedit.h \
+		../../Qt/6.2.1/gcc_64/include/QtWidgets/qabstractscrollarea.h \
+		../../Qt/6.2.1/gcc_64/include/QtGui/qtextoption.h \
+		../../Qt/6.2.1/gcc_64/include/QtGui/qtextcursor.h \
+		../../Qt/6.2.1/gcc_64/include/QtGui/qtextformat.h \
+		../../Qt/6.2.1/gcc_64/include/QtGui/qpen.h \
+		../../Qt/6.2.1/gcc_64/include/QtWidgets/QWidget \
 		../AppMenu/insercion.h \
 		../../Qt/6.2.1/gcc_64/include/QtCore/QVector \
 		../../Qt/6.2.1/gcc_64/include/QtCore/qvector.h \
 		../AppMenu/intercambio.h \
-		../AppMenu/seleccion.h
+		../AppMenu/seleccion.h \
+		../AppMenu/burbuja.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o mainwindow.o ../AppMenu/mainwindow.cpp
+
+quicksort.o: ../AppMenu/quicksort.cpp ../AppMenu/quicksort.h \
+		../../Qt/6.2.1/gcc_64/include/QtCore/QVector \
+		../../Qt/6.2.1/gcc_64/include/QtCore/qvector.h \
+		../../Qt/6.2.1/gcc_64/include/QtCore/qlist.h \
+		../../Qt/6.2.1/gcc_64/include/QtCore/qarraydatapointer.h \
+		../../Qt/6.2.1/gcc_64/include/QtCore/qarraydataops.h \
+		../../Qt/6.2.1/gcc_64/include/QtCore/qarraydata.h \
+		../../Qt/6.2.1/gcc_64/include/QtCore/qpair.h \
+		../../Qt/6.2.1/gcc_64/include/QtCore/qglobal.h \
+		../../Qt/6.2.1/gcc_64/include/QtCore/qconfig-bootstrapped.h \
+		../../Qt/6.2.1/gcc_64/include/QtCore/qconfig.h \
+		../../Qt/6.2.1/gcc_64/include/QtCore/qtcore-config.h \
+		../../Qt/6.2.1/gcc_64/include/QtCore/qsystemdetection.h \
+		../../Qt/6.2.1/gcc_64/include/QtCore/qprocessordetection.h \
+		../../Qt/6.2.1/gcc_64/include/QtCore/qcompilerdetection.h \
+		../../Qt/6.2.1/gcc_64/include/QtCore/qtypeinfo.h \
+		../../Qt/6.2.1/gcc_64/include/QtCore/qcontainerfwd.h \
+		../../Qt/6.2.1/gcc_64/include/QtCore/qsysinfo.h \
+		../../Qt/6.2.1/gcc_64/include/QtCore/qlogging.h \
+		../../Qt/6.2.1/gcc_64/include/QtCore/qflags.h \
+		../../Qt/6.2.1/gcc_64/include/QtCore/qatomic.h \
+		../../Qt/6.2.1/gcc_64/include/QtCore/qbasicatomic.h \
+		../../Qt/6.2.1/gcc_64/include/QtCore/qatomic_bootstrap.h \
+		../../Qt/6.2.1/gcc_64/include/QtCore/qgenericatomic.h \
+		../../Qt/6.2.1/gcc_64/include/QtCore/qatomic_cxx11.h \
+		../../Qt/6.2.1/gcc_64/include/QtCore/qglobalstatic.h \
+		../../Qt/6.2.1/gcc_64/include/QtCore/qnumeric.h \
+		../../Qt/6.2.1/gcc_64/include/QtCore/qversiontagging.h \
+		../../Qt/6.2.1/gcc_64/include/QtCore/qcontainertools_impl.h \
+		../../Qt/6.2.1/gcc_64/include/QtCore/qnamespace.h \
+		../../Qt/6.2.1/gcc_64/include/QtCore/qtmetamacros.h \
+		../../Qt/6.2.1/gcc_64/include/QtCore/qhashfunctions.h \
+		../../Qt/6.2.1/gcc_64/include/QtCore/qstring.h \
+		../../Qt/6.2.1/gcc_64/include/QtCore/qchar.h \
+		../../Qt/6.2.1/gcc_64/include/QtCore/qstringview.h \
+		../../Qt/6.2.1/gcc_64/include/QtCore/qbytearray.h \
+		../../Qt/6.2.1/gcc_64/include/QtCore/qrefcount.h \
+		../../Qt/6.2.1/gcc_64/include/QtCore/qbytearrayalgorithms.h \
+		../../Qt/6.2.1/gcc_64/include/QtCore/qbytearrayview.h \
+		../../Qt/6.2.1/gcc_64/include/QtCore/qstringliteral.h \
+		../../Qt/6.2.1/gcc_64/include/QtCore/qstringalgorithms.h \
+		../../Qt/6.2.1/gcc_64/include/QtCore/qanystringview.h \
+		../../Qt/6.2.1/gcc_64/include/QtCore/qutf8stringview.h \
+		../../Qt/6.2.1/gcc_64/include/QtCore/qstringtokenizer.h \
+		../../Qt/6.2.1/gcc_64/include/QtCore/qstringbuilder.h \
+		../../Qt/6.2.1/gcc_64/include/QtCore/qiterator.h \
+		../../Qt/6.2.1/gcc_64/include/QtCore/qbytearraylist.h \
+		../../Qt/6.2.1/gcc_64/include/QtCore/qstringlist.h \
+		../../Qt/6.2.1/gcc_64/include/QtCore/qalgorithms.h \
+		../../Qt/6.2.1/gcc_64/include/QtCore/qstringmatcher.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o quicksort.o ../AppMenu/quicksort.cpp
 
 seleccion.o: ../AppMenu/seleccion.cpp ../AppMenu/seleccion.h \
 		../../Qt/6.2.1/gcc_64/include/QtCore/QVector \
