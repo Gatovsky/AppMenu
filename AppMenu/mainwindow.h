@@ -32,7 +32,10 @@ public:
 
     void IngresarDatos();
 
+    QString AbrirArchivo(QString str);
+
     void ImprimirArchivo(QString str);
+
 
     void ContarLineas(QString str);
 

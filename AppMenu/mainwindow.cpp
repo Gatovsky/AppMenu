@@ -28,11 +28,21 @@ MainWindow::~MainWindow()
 void MainWindow::action_acercaqt(){
     QMessageBox::aboutQt(this, "Qt");
 }
+
 void MainWindow::action_acercade(){
-    QString texto = "Autor: Cloudiness México Corp.\n";
-    texto +="Fecha: 2021/12/12\n";
-    texto +="Software: AppMenu\n";
-    texto +="Licencia: GNU General Public License v3.0\n";
+    QString texto = "Autor: Cloudiness México Corp.\n\n";
+    texto +="Fecha: 2021/12/12\n\n";
+    texto +="Software: AppMenu\n\n";
+    texto +="Versión: 0.90\n\n";
+    texto +="Licencia: GNU General Public License v3.0\n\n";
+    texto += "Este programa es software libre y se distribuye bajo la Licencia Pública General GNU v3."
+             "En resumen, esto significa que usted es libre de usar y distribuir AppMenu para cualquier propósito,"
+             "comercial o no comercial, sin restricciones. modifique el programa como desee, "
+             "con la única restricción de que si distribuye la versión modificada, "
+             "debe proporcionar acceso a su código fuente."
+             ""
+             "Este programa se distribuye con la esperanza de que sea útil didacticamente, "
+             "pero SIN NINGUNA GARANTÍA.";
 
     QMessageBox::about(this, "AppMenu", texto);
 }
@@ -71,42 +81,44 @@ void MainWindow::IngresarDatos(){
 }
 
 void MainWindow::ContarLineas(QString lineas){
-    MainWindow l = new MainWindow();
     int c=0;
+    string linea;
 
-    for(int linea=0; linea < lineas.length(); linea++){
-        if(linea == '\n'){
-            c++;
-        }
+    istringstream is(lineas.toStdString());
+    while (getline(is,linea)) {
+        if(!linea.empty()) c++;
+
     }
 
-    l.setCantidadlineas(c);
-
+    QString str_l = "           Líneas de código del método: "+ QString::number(c);
+    ui->statusbar->showMessage(str_l);
 }
 
-void MainWindow::ImprimirArchivo(QString str){
-    MainWindow lineas = new MainWindow();
+
+QString MainWindow::AbrirArchivo(QString str){
     QFile archivo;
     archivo.setFileName(str);
     if(!archivo.exists()){
         QMessageBox::critical(this, "@Error", "No existe archivo que visualizar");
-        return;
+        return "";
     }
     archivo.open(QIODevice::ReadOnly | QIODevice::Text);
     if(!archivo.isOpen()){
         QMessageBox::critical(this, "@Error", archivo.errorString());
-        return;
+        return "";
     }
     QTextStream in(&archivo);
     QString texto= in.readAll();
-    ContarLineas(texto);
-    //lineas.setCantidadlineas(ui->textCodigo->document()->lineCount());
-    QString str_lineas =  "           Líneas de código del método: "+ QString::number(lineas.getCantidad());
-
-    ui->textCodigo->setText(texto);
-    ui->statusbar->showMessage(str_lineas);
 
     archivo.close();
+    return texto;
+
+}
+
+void MainWindow::ImprimirArchivo(QString str){
+
+    ui->textCodigo->setText(str);
+
 }
 
 
@@ -130,7 +142,8 @@ void MainWindow::sel_metodo_clicked(){
           str_v= QVector2Qstring(v);
 
           ImprimirValores(str_v_desordenado, str_v, "Inserción");
-          ImprimirArchivo("../metodos/insercion.html");
+          ImprimirArchivo(AbrirArchivo("../metodos/insercion.html"));
+          ContarLineas(AbrirArchivo("../AppMenu/insercion.cpp"));
 
 
           break;
@@ -150,7 +163,8 @@ void MainWindow::sel_metodo_clicked(){
           str_v_ordenado= QVector2Qstring(v);
 
           ImprimirValores(str_v_desordenado, str_v_ordenado, "Intercambio");
-          ImprimirArchivo("../metodos/intercambio.html");
+          ImprimirArchivo(AbrirArchivo("../metodos/intercambio.html"));
+          ContarLineas(AbrirArchivo("../AppMenu/intercambio.cpp"));
 
           break;
 
@@ -173,7 +187,8 @@ void MainWindow::sel_metodo_clicked(){
           str_v_ordenado = QVector2Qstring(v_ordenado);
 
           ImprimirValores(str_datos, str_v_ordenado, "Selección");
-          ImprimirArchivo("../metodos/seleccion.html");
+          ImprimirArchivo(AbrirArchivo("../metodos/seleccion.html"));
+          ContarLineas(AbrirArchivo("../AppMenu/seleccion.cpp"));
 
           break;
 
@@ -195,7 +210,9 @@ void MainWindow::sel_metodo_clicked(){
         str_v_ordenado = QVector2Qstring(v_ordenado);
 
         ImprimirValores(str_datos, str_v_ordenado, "Burbuja");
-        ImprimirArchivo("../metodos/burbuja.html");
+        ImprimirArchivo(AbrirArchivo("../metodos/burbuja.html"));
+        ContarLineas(AbrirArchivo("../AppMenu/burbuja.cpp"));
+
         break;
 
     }
@@ -217,7 +234,8 @@ void MainWindow::sel_metodo_clicked(){
         str_v_ordenado = QVector2Qstring(v_ordenado);
 
         ImprimirValores(str_datos, str_v_ordenado, "Quick Sort");
-        ImprimirArchivo("../metodos/quicksort.html");
+        ImprimirArchivo(AbrirArchivo("../metodos/quicksort.html"));
+        ContarLineas(AbrirArchivo("../AppMenu/quicksort.cpp"));
 
 
         break;
