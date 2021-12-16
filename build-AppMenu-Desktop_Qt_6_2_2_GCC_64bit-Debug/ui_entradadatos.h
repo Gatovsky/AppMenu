@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'entradadatos.ui'
 **
-** Created by: Qt User Interface Compiler version 6.2.1
+** Created by: Qt User Interface Compiler version 6.2.2
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
@@ -12,6 +12,7 @@
 #include <QtCore/QVariant>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QDialog>
+#include <QtWidgets/QGridLayout>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QLineEdit>
 #include <QtWidgets/QPushButton>
@@ -22,40 +23,55 @@ QT_BEGIN_NAMESPACE
 class Ui_entradaDatos
 {
 public:
-    QPushButton *pushButton;
+    QGridLayout *gridLayout;
     QLabel *label;
     QLabel *label_2;
     QSpinBox *spinBoxCantidad;
     QLineEdit *lineDatos;
+    QPushButton *pushButton;
 
     void setupUi(QDialog *entradaDatos)
     {
         if (entradaDatos->objectName().isEmpty())
             entradaDatos->setObjectName(QString::fromUtf8("entradaDatos"));
-        entradaDatos->resize(294, 145);
-        pushButton = new QPushButton(entradaDatos);
-        pushButton->setObjectName(QString::fromUtf8("pushButton"));
-        pushButton->setGeometry(QRect(180, 110, 80, 26));
-        QFont font;
-        font.setBold(true);
-        pushButton->setFont(font);
+        entradaDatos->resize(213, 120);
+        entradaDatos->setMinimumSize(QSize(0, 0));
+        entradaDatos->setMaximumSize(QSize(400, 200));
+        gridLayout = new QGridLayout(entradaDatos);
+        gridLayout->setObjectName(QString::fromUtf8("gridLayout"));
         label = new QLabel(entradaDatos);
         label->setObjectName(QString::fromUtf8("label"));
-        label->setGeometry(QRect(30, 10, 71, 18));
-        QFont font1;
-        font1.setPointSize(11);
-        font1.setBold(true);
-        label->setFont(font1);
+        QFont font;
+        font.setPointSize(11);
+        font.setBold(true);
+        label->setFont(font);
+
+        gridLayout->addWidget(label, 0, 0, 1, 1);
+
         label_2 = new QLabel(entradaDatos);
         label_2->setObjectName(QString::fromUtf8("label_2"));
-        label_2->setGeometry(QRect(110, 10, 58, 18));
-        label_2->setFont(font1);
+        label_2->setFont(font);
+
+        gridLayout->addWidget(label_2, 0, 1, 1, 1);
+
         spinBoxCantidad = new QSpinBox(entradaDatos);
         spinBoxCantidad->setObjectName(QString::fromUtf8("spinBoxCantidad"));
-        spinBoxCantidad->setGeometry(QRect(30, 60, 42, 27));
+
+        gridLayout->addWidget(spinBoxCantidad, 1, 0, 1, 1);
+
         lineDatos = new QLineEdit(entradaDatos);
         lineDatos->setObjectName(QString::fromUtf8("lineDatos"));
-        lineDatos->setGeometry(QRect(110, 60, 151, 26));
+
+        gridLayout->addWidget(lineDatos, 1, 1, 1, 2);
+
+        pushButton = new QPushButton(entradaDatos);
+        pushButton->setObjectName(QString::fromUtf8("pushButton"));
+        QFont font1;
+        font1.setBold(true);
+        pushButton->setFont(font1);
+
+        gridLayout->addWidget(pushButton, 2, 2, 1, 1);
+
 
         retranslateUi(entradaDatos);
 
@@ -65,9 +81,9 @@ public:
     void retranslateUi(QDialog *entradaDatos)
     {
         entradaDatos->setWindowTitle(QCoreApplication::translate("entradaDatos", "Dialog", nullptr));
-        pushButton->setText(QCoreApplication::translate("entradaDatos", "Enviar", nullptr));
         label->setText(QCoreApplication::translate("entradaDatos", "Cantidad", nullptr));
         label_2->setText(QCoreApplication::translate("entradaDatos", "Datos", nullptr));
+        pushButton->setText(QCoreApplication::translate("entradaDatos", "Enviar", nullptr));
     } // retranslateUi
 
 };

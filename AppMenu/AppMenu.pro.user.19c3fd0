@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE QtCreatorProject>
-<!-- Written by QtCreator 6.0.0, 2021-12-15T21:54:42. -->
+<!-- Written by QtCreator 6.0.0, 2021-12-14T22:02:40. -->
 <qtcreator>
  <data>
   <variable>EnvironmentId</variable>
-  <value type="QByteArray">{50c5d0f2-c347-474c-92f6-6649cdc4967a}</value>
+  <value type="QByteArray">{19c3fd09-3c33-48a4-b944-3bfc798f3dc5}</value>
  </data>
  <data>
   <variable>ProjectExplorer.Project.ActiveTarget</variable>
@@ -83,14 +83,17 @@
     <valuelist type="QVariantList" key="ClangTools.SuppressedDiagnostics"/>
     <value type="bool" key="ClangTools.UseGlobalSettings">true</value>
    </valuemap>
+   <valuemap type="QVariantMap" key="CppEditor.QuickFix">
+    <value type="bool" key="UseGlobalSettings">true</value>
+   </valuemap>
   </valuemap>
  </data>
  <data>
   <variable>ProjectExplorer.Project.Target.0</variable>
   <valuemap type="QVariantMap">
    <value type="QString" key="DeviceType">Desktop</value>
-   <value type="QString" key="ProjectExplorer.ProjectConfiguration.DefaultDisplayName">Desktop Qt 6.2.2 GCC 64bit</value>
-   <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">Desktop Qt 6.2.2 GCC 64bit</value>
+   <value type="QString" key="ProjectExplorer.ProjectConfiguration.DefaultDisplayName">Replacement for &quot;Desktop Qt 6.2.2 GCC 64bit&quot;</value>
+   <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">Replacement for &quot;Desktop Qt 6.2.2 GCC 64bit&quot;</value>
    <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">qt.qt6.622.gcc_64_kit</value>
    <value type="qlonglong" key="ProjectExplorer.Target.ActiveBuildConfiguration">0</value>
    <value type="qlonglong" key="ProjectExplorer.Target.ActiveDeployConfiguration">0</value>

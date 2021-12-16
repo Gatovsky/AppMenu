@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'mainwindow.ui'
 **
-** Created by: Qt User Interface Compiler version 6.2.1
+** Created by: Qt User Interface Compiler version 6.2.2
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
@@ -15,11 +15,13 @@
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QComboBox>
 #include <QtWidgets/QFormLayout>
+#include <QtWidgets/QGridLayout>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QMenu>
 #include <QtWidgets/QMenuBar>
 #include <QtWidgets/QPushButton>
+#include <QtWidgets/QSpacerItem>
 #include <QtWidgets/QStatusBar>
 #include <QtWidgets/QTextEdit>
 #include <QtWidgets/QWidget>
@@ -33,13 +35,19 @@ public:
     QAction *actionAcerca;
     QAction *actionAcerca_de_Qt;
     QWidget *centralwidget;
-    QWidget *layoutWidget;
+    QGridLayout *gridLayout_4;
+    QFormLayout *formLayout_2;
     QFormLayout *formLayout;
     QLabel *label_programa;
     QComboBox *comboBox;
     QPushButton *botonEntrada;
-    QTextEdit *textCodigo;
+    QSpacerItem *verticalSpacer_3;
+    QSpacerItem *verticalSpacer;
+    QGridLayout *gridLayout;
     QTextEdit *salidaResultado;
+    QSpacerItem *verticalSpacer_2;
+    QGridLayout *gridLayout_3;
+    QTextEdit *textCodigo;
     QMenuBar *menubar;
     QMenu *menuMenu;
     QMenu *menuAcerca_de;
@@ -76,22 +84,25 @@ public:
         actionAcerca_de_Qt->setIcon(icon3);
         centralwidget = new QWidget(MainWindow);
         centralwidget->setObjectName(QString::fromUtf8("centralwidget"));
-        layoutWidget = new QWidget(centralwidget);
-        layoutWidget->setObjectName(QString::fromUtf8("layoutWidget"));
-        layoutWidget->setGeometry(QRect(40, 60, 221, 101));
-        formLayout = new QFormLayout(layoutWidget);
+        gridLayout_4 = new QGridLayout(centralwidget);
+        gridLayout_4->setObjectName(QString::fromUtf8("gridLayout_4"));
+        formLayout_2 = new QFormLayout();
+        formLayout_2->setObjectName(QString::fromUtf8("formLayout_2"));
+        formLayout_2->setLabelAlignment(Qt::AlignBottom|Qt::AlignLeading|Qt::AlignLeft);
+        formLayout = new QFormLayout();
         formLayout->setObjectName(QString::fromUtf8("formLayout"));
-        formLayout->setContentsMargins(0, 0, 0, 0);
-        label_programa = new QLabel(layoutWidget);
+        formLayout->setVerticalSpacing(6);
+        formLayout->setContentsMargins(20, -1, 20, 32);
+        label_programa = new QLabel(centralwidget);
         label_programa->setObjectName(QString::fromUtf8("label_programa"));
         QFont font1;
         font1.setPointSize(11);
         font1.setBold(false);
         label_programa->setFont(font1);
 
-        formLayout->setWidget(0, QFormLayout::LabelRole, label_programa);
+        formLayout->setWidget(1, QFormLayout::LabelRole, label_programa);
 
-        comboBox = new QComboBox(layoutWidget);
+        comboBox = new QComboBox(centralwidget);
         comboBox->addItem(QString());
         comboBox->addItem(QString());
         comboBox->addItem(QString());
@@ -99,34 +110,70 @@ public:
         comboBox->addItem(QString());
         comboBox->setObjectName(QString::fromUtf8("comboBox"));
 
-        formLayout->setWidget(0, QFormLayout::FieldRole, comboBox);
+        formLayout->setWidget(1, QFormLayout::FieldRole, comboBox);
 
-        botonEntrada = new QPushButton(layoutWidget);
+        botonEntrada = new QPushButton(centralwidget);
         botonEntrada->setObjectName(QString::fromUtf8("botonEntrada"));
         QFont font2;
         font2.setBold(true);
         botonEntrada->setFont(font2);
 
-        formLayout->setWidget(1, QFormLayout::FieldRole, botonEntrada);
+        formLayout->setWidget(2, QFormLayout::FieldRole, botonEntrada);
 
-        textCodigo = new QTextEdit(centralwidget);
-        textCodigo->setObjectName(QString::fromUtf8("textCodigo"));
-        textCodigo->setGeometry(QRect(40, 180, 711, 361));
-        QFont font3;
-        font3.setPointSize(11);
-        textCodigo->setFont(font3);
-        textCodigo->setAutoFormatting(QTextEdit::AutoNone);
+        verticalSpacer_3 = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding);
+
+        formLayout->setItem(3, QFormLayout::FieldRole, verticalSpacer_3);
+
+        verticalSpacer = new QSpacerItem(20, 80, QSizePolicy::Minimum, QSizePolicy::Fixed);
+
+        formLayout->setItem(0, QFormLayout::FieldRole, verticalSpacer);
+
+
+        formLayout_2->setLayout(0, QFormLayout::LabelRole, formLayout);
+
+        gridLayout = new QGridLayout();
+        gridLayout->setObjectName(QString::fromUtf8("gridLayout"));
+        gridLayout->setHorizontalSpacing(0);
+        gridLayout->setContentsMargins(-1, 0, 20, 31);
         salidaResultado = new QTextEdit(centralwidget);
         salidaResultado->setObjectName(QString::fromUtf8("salidaResultado"));
-        salidaResultado->setGeometry(QRect(270, 59, 481, 101));
+        QFont font3;
+        font3.setPointSize(10);
+        font3.setBold(true);
+        salidaResultado->setFont(font3);
+
+        gridLayout->addWidget(salidaResultado, 1, 0, 1, 1);
+
+        verticalSpacer_2 = new QSpacerItem(30, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        gridLayout->addItem(verticalSpacer_2, 0, 0, 1, 1);
+
+
+        formLayout_2->setLayout(0, QFormLayout::FieldRole, gridLayout);
+
+        gridLayout_3 = new QGridLayout();
+        gridLayout_3->setObjectName(QString::fromUtf8("gridLayout_3"));
+        gridLayout_3->setVerticalSpacing(24);
+        gridLayout_3->setContentsMargins(20, -1, 20, -1);
+        textCodigo = new QTextEdit(centralwidget);
+        textCodigo->setObjectName(QString::fromUtf8("textCodigo"));
         QFont font4;
-        font4.setPointSize(10);
-        font4.setBold(true);
-        salidaResultado->setFont(font4);
+        font4.setPointSize(11);
+        textCodigo->setFont(font4);
+        textCodigo->setAutoFormatting(QTextEdit::AutoNone);
+
+        gridLayout_3->addWidget(textCodigo, 0, 0, 1, 1);
+
+
+        formLayout_2->setLayout(1, QFormLayout::SpanningRole, gridLayout_3);
+
+
+        gridLayout_4->addLayout(formLayout_2, 0, 0, 1, 1);
+
         MainWindow->setCentralWidget(centralwidget);
         menubar = new QMenuBar(MainWindow);
         menubar->setObjectName(QString::fromUtf8("menubar"));
-        menubar->setGeometry(QRect(0, 0, 792, 22));
+        menubar->setGeometry(QRect(0, 0, 792, 23));
         menuMenu = new QMenu(menubar);
         menuMenu->setObjectName(QString::fromUtf8("menuMenu"));
         menuAcerca_de = new QMenu(menubar);
@@ -170,7 +217,7 @@ public:
         textCodigo->setHtml(QCoreApplication::translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><meta charset=\"utf-8\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
-"</style></head><body style=\" font-family:'Sans Serif'; font-size:11pt; font-weight:400; font-style:normal;\">\n"
+"</style></head><body style=\" font-family:'Cantarell'; font-size:11pt; font-weight:400; font-style:normal;\">\n"
 "<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:4; text-indent:0px; font-family:'Cascadia Code PL';\"><br /></p></body></html>", nullptr));
         menuMenu->setTitle(QCoreApplication::translate("MainWindow", "Menu", nullptr));
         menuAcerca_de->setTitle(QCoreApplication::translate("MainWindow", "Ayuda", nullptr));
